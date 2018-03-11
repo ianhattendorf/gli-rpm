@@ -1,0 +1,28 @@
+From f9c7876888f948927aadbd1fc8c43f984e1d2649 Mon Sep 17 00:00:00 2001
+From: Ian Hattendorf <ian@ianhattendorf.com>
+Date: Fri, 9 Mar 2018 16:06:01 -0700
+Subject: [PATCH] Use system GLM
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2a2edcfc..797b943f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,8 +71,9 @@ endmacro(addExternalPackageGTC)
+ ################################
+ # Add GLM 
+ 
+-set(GLM_DIRECTORY glm)
+-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/${GLM_DIRECTORY})
++# glm find_package fails on non 64-bit
++find_path(glm_INCLUDE_DIRS glm/glm.hpp)
++include_directories(${glm_INCLUDE_DIRS})
+ 
+ ################################
+ # Add subdirectory
+-- 
+2.14.3
+
