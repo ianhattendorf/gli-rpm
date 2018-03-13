@@ -15,9 +15,11 @@ Patch0:		gli-cxx-flags.patch
 Patch1:		gli-use-system-glm.patch
 
 # Test failures on bid-endian machines
+# https://github.com/g-truc/gli/issues/140
 ExcludeArch:	ppc64 s390x
 
 BuildRequires:	cmake
+BuildRequires:	gcc-c++
 BuildRequires:	glm-static
 
 %description
@@ -29,7 +31,6 @@ textures, convert textures, generate mipmaps, etc.
 
 %package	devel
 Summary:	OpenGL Image (GLI) is a header only C++ image library for graphics software
-Group:		Development/Libraries
 Requires:	glm-static
 
 # https://fedoraproject.org/wiki/Packaging:Guidelines#Packaging_Static_Libraries_2
@@ -44,7 +45,6 @@ textures, convert textures, generate mipmaps, etc.
 
 %package	doc
 Summary:	Documentation for %{name}-devel
-Group:		Documentation
 
 %description	doc
 API documentation for the %{name}-devel package.
